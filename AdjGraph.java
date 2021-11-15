@@ -61,7 +61,7 @@ public class AdjGraph {
     public void setLabel(int vertex, int newLabel) {
 
         labels[vertex] = newLabel;
-        
+
     }
 
     // Accessor method to determine the number of vertices in this graph
@@ -69,6 +69,19 @@ public class AdjGraph {
 
         return labels.length;
 
+    }
+
+    public Queue getBreathFirstTraversal(int origin) {
+
+
+        return null;
+    }
+
+    public Queue getDepthFirstTraversal(int origin) {
+
+
+
+        return null;
     }
 
 }
