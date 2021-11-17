@@ -71,13 +71,25 @@ public class AdjGraph {
 
     }
 
-    public Queue getBreathFirstTraversal(int origin) {
+
+    /**
+     * Performs breath first traversal on this graph using a queue.
+     * @param origin The vertex from which to start the traversal.
+     * @return A LinkedQueue containing the traversal order.
+     */
+    public LinkedQueue getBreathFirstTraversal(int origin) {
 
 
         return null;
     }
 
-    public Queue getDepthFirstTraversal(int origin) {
+
+    /**
+     * Performs depth first traversal on this graph using a stack.
+     * @param origin The vertex from which to start the traversal.
+     * @return A LinkedQueue containing the traversal order.
+     */
+    public LinkedQueue getDepthFirstTraversal(int origin) {
 
 
 
