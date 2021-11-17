@@ -13,11 +13,11 @@ Set up project with given code (John Salinas, JohnSalinas123)
 
 ### Adjacency matrix version
 ````
-Implement: Create the graph shown in Task 1 instructions (Name goes here)
+Implement: Create the graph shown in Task 1 instructions (John Salinas, JohnSalinas123)
 ````
 
 ````
-Implement: breadth-first traversal algorithm (Name goes here)
+Implement: breadth-first traversal algorithm (Priscilla Ballesteros, PBallesteros02)
   => traversal begins at node labeled A
 ````
 
@@ -26,7 +26,7 @@ Implement: Create graph shown in Task 2 instructions (Name goes here)
 ````
 
 ````
-Implement: Iterative algorithm that performs depth-first traveral of graph (Name goes here)
+Implement: Iterative algorithm that performs depth-first traveral of graph (Daniel Rodriguez, drodriguez97)
   => using a stack for your iterative algorithm (don't use recursive method)
 ````
 
