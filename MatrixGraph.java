@@ -80,7 +80,7 @@ public class MatrixGraph {
     public LinkedQueue getBreathFirstTraversal(int origin) {
 
 
-        return null;
+        return null;        // Placeholder null return, delete after
     }
 
 
@@ -92,8 +92,8 @@ public class MatrixGraph {
     public LinkedQueue getDepthFirstTraversal(int origin) {
 
 
-
-        return null;
+ 
+        return null;        // Placeholder null return, delete after
     }
 
 }
