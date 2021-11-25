@@ -141,6 +141,30 @@ public class ListGraph {
 
     }
 
+    /**
+     * Performs breath first traversal on this graph using a queue.
+     * @param origin The vertex from which to start the traversal.
+     * @return A LinkedQueue containing the traversal order.
+     */
+    public LinkedQueue getBreadthFirstTraversal(int origin) {
+
+
+        return null;
+    }
+
+
+    /**
+     * Performs depth first traversal on this graph using a stack.
+     * @param origin The vertex from which to start the traversal.
+     * @return A LinkedQueue containing the traversal order.
+     */
+    public LinkedQueue getDepthFirstTraversal(int origin) {
+
+
+
+        return null;
+    }
+
 
     // Member inner class Node for linked data
     private class Node {
