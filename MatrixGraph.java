@@ -1,11 +1,11 @@
 public class MatrixGraph {
     
     private boolean[][] edges;      // edges[i][j] is true if there is a vertex from i to j
-    private int[] labels;           // labels[i] contains the label for vertex i
+    private char[] labels;           // labels[i] contains the label for vertex i
 
     public MatrixGraph(int n) {
         edges = new boolean[n][n];  // All values initially false
-        labels = new int[n];        // All values initially null
+        labels = new char[n];        // All values initially null
     }
  
     public boolean isEdge(int source, int target) {
@@ -58,7 +58,7 @@ public class MatrixGraph {
     }
 
     // Change the label of a vertex of this graph
-    public void setLabel(int vertex, int newLabel) {
+    public void setLabel(int vertex, char newLabel) {
 
         labels[vertex] = newLabel;
 
