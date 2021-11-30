@@ -97,6 +97,14 @@ public class LinkedQueue
 		}
 
 	}
+
+	public int getBack() {
+		if (isEmpty()) {
+			throw new NoSuchElementException();
+		} else {
+			return lastNode.getData();
+		}
+	}
 	
 	/** Detects whether this queue is empty.
 		 @return  True if the queue is empty, or false otherwise. */
