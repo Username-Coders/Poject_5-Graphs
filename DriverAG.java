@@ -12,9 +12,20 @@ public class DriverAG {
         System.out.println();
     }
 
+    public static void printTraversalLabels_forList(ListGraph listGraph, LinkedQueue traversal) {
+
+        for (int i = 0; i < listGraph.getSize(); i++) {
+            int vertex = traversal.dequeue();
+            char label = listGraph.getLabel(vertex);
+
+            System.out.print(label + " ");
+        }
+
+        System.out.println();
+    }
+
     public static void main(String []args) {
 
-        /*
 
         ListGraph graphList = new ListGraph(9);
 
@@ -50,16 +61,26 @@ public class DriverAG {
 
         graphList.addEdge(8,5);
 
-        //System.out.println(graphList.isEdge(0,2));
-
-        //graphList.removeEdge(0, 2);
-
-        //System.out.println(graphList.isEdge(3, 4));
-
         graphList.printGraph();
 
+        LinkedQueue traversalBreadth1 = graphList.getBreathFirstTraversal(0);
+
+        printTraversalLabels_forList(graphList, traversalBreadth1);
+
+        LinkedQueue traversalDepth1 = graphList.getDepthFirstTraversal(0);
+
+        printTraversalLabels_forList(graphList, traversalDepth1);
+
+
+        /*
+        int[] neighbor = graphList.neighbors(5);
+        System.out.print("Neighbors: ");
+        for (int i = 0; i < neighbor.length; i++) {
+            System.out.print(neighbor[i] + " ");
+        }
         */
 
+        
         MatrixGraph matrixGraph = new MatrixGraph(9);
 
         matrixGraph.setLabel(0,'A');
@@ -96,13 +117,15 @@ public class DriverAG {
 
         matrixGraph.printGraph();
 
-        LinkedQueue traversalBreadth = matrixGraph.getBreathFirstTraversal(0);
+        LinkedQueue traversalBreadth2 = matrixGraph.getBreathFirstTraversal(0);
 
-        printTraversalLabels_forMatrix(matrixGraph, traversalBreadth);
+        printTraversalLabels_forMatrix(matrixGraph, traversalBreadth2);
 
-        LinkedQueue traversalDepth = matrixGraph.getDepthFirstTraversal(0);
+        LinkedQueue traversalDepth2 = matrixGraph.getDepthFirstTraversal(0);
 
-        printTraversalLabels_forMatrix(matrixGraph, traversalDepth);
+        printTraversalLabels_forMatrix(matrixGraph, traversalDepth2);
+
+        
 
     }
 
