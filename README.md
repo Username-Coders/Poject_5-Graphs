@@ -33,17 +33,26 @@ Implement: Iterative algorithm that performs depth-first traveral of graph (Dani
 ### Adjacency list version
 
 ````
-Work in progress!
+Implement ListGraph.java methods for the adjacency list representation (John Salinas, JohnSalinas123)
 ````
-
 
 
 Screencast recording, talk about your code briefly, less than 3 minutes (All members)
 
 Unit testing on added methods using unit test framework (John Salinas, JohnSalinas123)
 
-## iii) Link to screencast:
-Link goes here
 
-## iv) Extra Features
+## iii) Extra Features
+
+### Made two versions, using adjacency matrix and adjacency list representation
+
+### iv) How to run code
+
+```` 
+1. Make MatrixGraph or ListGraph, passing in the number of verteces
+2. Set the labels of the verteces
+3. Add the edges to each vertices
+4. Make a LinkedQueue to hold result of getBreathFirstTraversal or getDepthFirstTraversal
+5. Use printTraversalLabels_forList or printTraversalLabels_forMatrix to print the traversal order with the labels
+````
 
