@@ -105,21 +105,86 @@ public class MatrixGraph {
      * @param origin The vertex from which to start the traversal.
      * @return A LinkedQueue containing the traversal order.
      */
-    public LinkedQueue getBreathFirstTraversal(int origin) {
+    public LinkedQueue getDepthFirstTraversal(int origin) {
 
+      LinkedQueue traversalOrder = new LinkedQueue;
+      LinkedStack vertexQueue =   new LinkedStack;
 
-        return null;        // Placeholder null return, delete after
+      int visitedCounter = 0;
+      int[] visited = new int[labels.length];
+
+      traversalOrder.enqueue(origin);
+      vertexStack.push(origin);
+
+      while (!vertexStack.isEmpty())
+      {
+        int topVertex = vertexStack.peek();
+        int[] neighbors = neighbors(topVertex);
+
+        if(hasAnUnVisited(visited, neighbors))
+        {
+            int nextNeighbor = neighbors[getUnvisited(visited, neighbors)];
+
+            visit(visited, nextNeighbor, visitedCounter);
+            visitedCounter++;
+            
+            traversalOrder.enqueue(nextNeighbor);
+            vertexQueue.push(nextNeighbor);
+        }
+
+      }
+      else
+      {
+        vertexQueue.pop();
+      }
+        
     }
-
+    return traversalOrder;       
+    }
 
     /**
      * Performs depth first traversal on this graph using a stack.
      * @param origin The vertex from which to start the traversal.
      * @return A LinkedQueue containing the traversal order.
      */
+     public LinkedQueue getDepthFirstTraversal(int origin) {
+
+      LinkedQueue traversalOrder = new LinkedQueue;
+      LinkedStack vertexQueue =   new LinkedStack;
+
+      int visitedCounter = 0;
+      int[] visited = new int[labels.length];
+
+      traversalOrder.enqueue(origin);
+      vertexStack.push(origin);
+
+      while (!vertexStack.isEmpty())
+      {
+        int topVertex = vertexStack.peek();
+        int[] neighbors = neighbors(topVertex);
+
+        if(hasAnUnVisited(visited, neighbors))
+        {
+            int nextNeighbor = neighbors[getUnvisited(visited, neighbors)];
+
+            visit(visited, nextNeighbor, visitedCounter);
+            visitedCounter++;
+            
+            traversalOrder.enqueue(nextNeighbor);
+            vertexQueue.push(nextNeighbor);
+        }
+
+      }
+      else
+      {
+        vertexQueue.pop();
+      }
+        
+    }
+    return traversalOrder;  
     public LinkedQueue getDepthFirstTraversal(int origin) {
 
-        return null;        // Placeholder null return, delete after
+       
     }
 
 
