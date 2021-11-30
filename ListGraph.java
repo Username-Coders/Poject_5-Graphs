@@ -157,11 +157,11 @@ public class ListGraph {
              vertexQueue.enqueue(origin);
             
              while(!vertexQueue.isEmpty()){
-              vertexLists = vertexQueue.dequeue();
-              int[] neighbors = frontVertex.getNeighborIterator();
-            
-                while(int[] neighbors.hasNext()){
-                  nextNeighbors = neighbors,next();
+              int frontVertex = vertexQueue.dequeue();
+              int[] neighbors = neighbors(frontVertex);
+              int neighborIndex = 0;
+                while(neighborIndex != neighbors.length){
+                  int nextNeighbors = neighbors.next();
                   if(!nextNeighbors.isVisited()){
                     nextNeighbors.visit();
                     traversalOrder.enqueue(nextNeighbors.getLabel());
