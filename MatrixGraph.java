@@ -118,43 +118,40 @@ public class MatrixGraph {
      */
      public LinkedQueue getDepthFirstTraversal(int origin) {
 
-      LinkedQueue traversalOrder = new LinkedQueue;
-      LinkedStack vertexQueue =   new LinkedStack;
+        LinkedQueue traversalOrder = new LinkedQueue();
+        LinkedStack vertexStack = new LinkedStack();
+        
+        int visitedCounter = 0;
+        int[] visited = new int[labels.length];
 
-      int visitedCounter = 0;
-      int[] visited = new int[labels.length];
+        traversalOrder.enqueue(origin);
+        vertexStack.push(origin);
 
-      traversalOrder.enqueue(origin);
-      vertexStack.push(origin);
+        while (!vertexStack.isEmpty()) {
 
-      while (!vertexStack.isEmpty())
-      {
-        int topVertex = vertexStack.peek();
-        int[] neighbors = neighbors(topVertex);
+            int topVertex = vertexStack.peek();
+            int[] neighbors = neighbors(topVertex);
 
-        if(hasAnUnVisited(visited, neighbors))
-        {
-            int nextNeighbor = neighbors[getUnvisited(visited, neighbors)];
-
-            visit(visited, nextNeighbor, visitedCounter);
-            visitedCounter++;
             
-            traversalOrder.enqueue(nextNeighbor);
-            vertexQueue.push(nextNeighbor);
+            if (hasAnUnvisited(visited, neighbors)) {
+
+                int nextNeighbor = neighbors[getUnvisited(visited, neighbors)];
+
+                visit(visited, nextNeighbor, visitedCounter);
+                visitedCounter++;   
+
+                traversalOrder.enqueue(nextNeighbor);
+                vertexStack.push(nextNeighbor);
+
+            } else {
+                vertexStack.pop();
+            }
+
         }
 
-      }
-      else
-      {
-        vertexQueue.pop();
-      }
-        
+        return traversalOrder;
     }
-    return traversalOrder;  
-    public LinkedQueue getDepthFirstTraversal(int origin) {
-
-       
-    }
+    
 
 
     private void visit(int[] visitedArray, int vertex , int index) {

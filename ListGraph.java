@@ -209,35 +209,38 @@ public class ListGraph {
      */
     public LinkedQueue getDepthFirstTraversal(int origin) {
 
-        LinkedQueue traversalOrder = new LinkedQueue;
-        LinkedStack vertexQueue =   new LinkedStack;
-
+        LinkedQueue traversalOrder = new LinkedQueue();
+        LinkedStack vertexStack = new LinkedStack();
+        
         int visitedCounter = 0;
         int[] visited = new int[labels.length];
-      
-         traversalOrder.enqueue(origin);
+
+        traversalOrder.enqueue(origin);
         vertexStack.push(origin);
 
-         while (!vertexStack.isEmpty())
-          {
-            int topVertex = vertexStack.peek();
-            int[] neighbors = frontVertex.getNeighborIterator();
+        while (!vertexStack.isEmpty()) {
 
-            if(!nextNeighbors.isVisited())
-            {
-                nextNeighbors = nextNeighbor.hasAnUnVisited;
-                nextNeighbors.visited();
+            int topVertex = vertexStack.peek();
+            int[] neighbors = neighbors(topVertex);
+
             
+            if (hasAnUnvisited(visited, neighbors)) {
+
+                int nextNeighbor = neighbors[getUnvisited(visited, neighbors)];
+
+                visit(visited, nextNeighbor, visitedCounter);
+                visitedCounter++;   
+
                 traversalOrder.enqueue(nextNeighbor);
-                vertexQueue.push(nextNeighbor);
+                vertexStack.push(nextNeighbor);
+
+            } else {
+                vertexStack.pop();
             }
 
         }
-        else
-            vertexQueue.pop();
-        
-      }
-      return traversalOrder;
+
+        return traversalOrder;
     }
 
 
