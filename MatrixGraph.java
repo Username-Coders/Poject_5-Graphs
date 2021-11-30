@@ -107,31 +107,37 @@ public class MatrixGraph {
      */
     public LinkedQueue getBreathFirstTraversal(int origin) {
        
-            LinkedQueue traversalOrder = new LinkedQueue();     // queue for traversal order
-            LinkedQueue vertexQueue = new LinkedQueue();       // queue holds visted vertices
-            int visitedCounter = 0 ;
-            int[] visited = new int[labels.length];
-            
-             traversalOrder.enqueue(origin);                // adding vertex to queues
-             vertexQueue.enqueue(origin);
-            
-             while (!vertexQueue.isEmpty()){                    
-              int frontVertex = vertexQueue.dequeue();             //removal or vertex in vertex queue
-              int[] neighbors = neighbors(frontVertex);             //count of neighbors
-              int neighborIndex = 0;
+        LinkedQueue traversalOrder = new LinkedQueue();             // queue for traversal order
+        LinkedQueue vertexQueue = new LinkedQueue();                // queue for vertex queue order
+        int visitedCounter = 0;
+        int[] visited = new int[labels.length];
 
-                while (neighborIndex != neighbors.length){              //index of next neighbors 
-                   int nextNeighbors = neighbors[neighborIndex];
+        traversalOrder.enqueue(origin);                             // adding vertex to queues
+        vertexQueue.enqueue(origin);
 
-                  if(isVisited(visited,nextNeighbors) == false) {       // if neighbors is not "visited", 
-                    visit(visited, nextNeighbors, visitedCounter);      // then mark as "visited"
-                    traversalOrder.enqueue(nextNeighbors);          // add next neightbors to queues
-                    vertexQueue.enqueue(nextNeighbors);
-                  }
-                  neighborIndex++;
+        while (!vertexQueue.isEmpty()) {
+
+            int frontVertex = vertexQueue.dequeue();                // removal or vertex in vertex queue
+            int[] neighbors = neighbors(frontVertex);               
+            int neighborIndex = 0;                            
+            while (neighborIndex != neighbors.length) {             
+
+                int nextNeighbor = neighbors[neighborIndex];
+                if (isVisited(visited,nextNeighbor) == false) {     // if neighbors is not "visited"
+                    visit(visited, nextNeighbor, visitedCounter);   // then mark as "visited"
+                    visitedCounter++;                               
+
+                    traversalOrder.enqueue(nextNeighbor);           // add next neightbors to queues
+                    vertexQueue.enqueue(nextNeighbor);
+
+                } 
+                
+                neighborIndex++;
+
             }
-        }
 
+        }
+        
         return traversalOrder;        
     }
 
