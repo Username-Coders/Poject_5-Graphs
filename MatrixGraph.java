@@ -105,43 +105,30 @@ public class MatrixGraph {
      * @param origin The vertex from which to start the traversal.
      * @return A LinkedQueue containing the traversal order.
      */
-    public LinkedQueue getDepthFirstTraversal(int origin) {
+   public LinkedQueue getBreadthFirstTraversal(int origin) {
 
-      LinkedQueue traversalOrder = new LinkedQueue;
-      LinkedStack vertexQueue =   new LinkedStack;
-
-      int visitedCounter = 0;
-      int[] visited = new int[labels.length];
-
-      traversalOrder.enqueue(origin);
-      vertexStack.push(origin);
-
-      while (!vertexStack.isEmpty())
-      {
-        int topVertex = vertexStack.peek();
-        int[] neighbors = neighbors(topVertex);
-
-        if(hasAnUnVisited(visited, neighbors))
-        {
-            int nextNeighbor = neighbors[getUnvisited(visited, neighbors)];
-
-            visit(visited, nextNeighbor, visitedCounter);
-            visitedCounter++;
+            LinkedQueue traversalOrder = new LinkedQueue();
+            LinkedQueue vertexQueue = new LinkedQueue();
+            int visitedCounter = 0 ;
+            int[] visited = new int[labels.length];
             
-            traversalOrder.enqueue(nextNeighbor);
-            vertexQueue.push(nextNeighbor);
-        }
-
-      }
-      else
-      {
-        vertexQueue.pop();
-      }
-        
-    }
-    return traversalOrder;       
-    }
-
+             traversalOrder.enqueue(origin);
+             vertexQueue.enqueue(origin);
+            
+             while(!vertexQueue.isEmpty()){
+              vertexLists = vertexQueue.dequeue();
+              int[] neighbors = frontVertex.getNeighborIterator();
+            
+                while(int[] neighbors.hasNext()){
+                  nextNeighbors = neighbors,next();
+                  if(!nextNeighbors.isVisited()){
+                    nextNeighbors.visit();
+                    traversalOrder.enqueue(nextNeighbors.getLabel());
+                    vertexQueue.enqueue(nextNeighbors);
+                    
+                  }
+                }
+                 
     /**
      * Performs depth first traversal on this graph using a stack.
      * @param origin The vertex from which to start the traversal.
