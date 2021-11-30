@@ -1,3 +1,5 @@
+import javax.swing.text.AbstractDocument.BranchElement;
+
 public class MatrixGraph {
     
     private boolean[][] edges;      // edges[i][j] is true if there is a vertex from i to j
@@ -20,7 +22,7 @@ public class MatrixGraph {
 
     }
 
-    public int getLabel(int vertex) {
+    public char getLabel(int vertex) {
 
         return labels[vertex];        
 
@@ -31,7 +33,7 @@ public class MatrixGraph {
         //int i;
         int count = 0;
         int[] answer;
-
+        
         for (int i = 0; i < labels.length; i++) {
             if (edges[vertex][i]) {
                 count++;
@@ -71,6 +73,32 @@ public class MatrixGraph {
 
     }
 
+    public void printGraph() {
+
+        for (int k = 0; k < labels.length; k++) {
+            
+                System.out.print(labels[k] + "      ");
+
+        }
+        System.out.println();
+
+
+        for (int i = 0; i < edges.length; i++) {
+            
+            for (int j = 0; j < edges[0].length; j++) {
+                if (edges[i][j] == false) {
+                    System.out.print(edges[i][j] + "  ");
+                } else {
+                    System.out.print(edges[i][j] + "   ");
+                }
+
+                
+            }
+            System.out.println();
+        }
+
+    }
+
 
     /**
      * Performs breath first traversal on this graph using a queue.
@@ -91,9 +119,65 @@ public class MatrixGraph {
      */
     public LinkedQueue getDepthFirstTraversal(int origin) {
 
-
- 
         return null;        // Placeholder null return, delete after
     }
+
+
+    private void visit(int[] visitedArray, int vertex , int index) {
+
+        visitedArray[index] = vertex;
+
+    }
+
+    private boolean isVisited(int[] visited, int vertex) {
+
+        boolean result = false;
+
+        for (int i = 0; i < visited.length; i++) {
+            if (visited[i] == vertex) {
+                result = true;
+                break;
+            }
+        }
+
+        return result;
+        
+    }
+
+    private  boolean hasAnUnvisited(int[] visited, int[] neighbor) {
+        
+        boolean unvisitedExists = false;
+        
+        for (int i = 0; i < neighbor.length; i++) {
+            int neighborChosen = neighbor[i];
+
+            if (!isVisited(visited, neighborChosen)) {
+                unvisitedExists = true;
+            }
+
+
+        }
+        
+        return unvisitedExists;
+
+    }
+
+    private int getUnvisited(int[] visited, int[] neighbor) {
+
+        int result = 0;
+
+        for (int i = 0; i < neighbor.length; i++) {
+            int neighborChosen = neighbor[i];
+
+            if (!isVisited(visited, neighborChosen)) {
+                result = i;
+                break;
+            }
+
+        }
+
+        return result;
+    }
+
 
 }
