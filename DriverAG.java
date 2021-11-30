@@ -26,6 +26,7 @@ public class DriverAG {
 
     public static void main(String []args) {
 
+        // Test code for ListGraph
 
         ListGraph graphList = new ListGraph(9);
 
@@ -61,7 +62,7 @@ public class DriverAG {
 
         graphList.addEdge(8,5);
 
-        graphList.printGraph();
+        //graphList.printGraph();
 
         LinkedQueue traversalBreadth1 = graphList.getBreathFirstTraversal(0);
 
@@ -72,14 +73,8 @@ public class DriverAG {
         printTraversalLabels_forList(graphList, traversalDepth1);
 
 
-        /*
-        int[] neighbor = graphList.neighbors(5);
-        System.out.print("Neighbors: ");
-        for (int i = 0; i < neighbor.length; i++) {
-            System.out.print(neighbor[i] + " ");
-        }
-        */
 
+        // Test code for MatrixGraph
         
         MatrixGraph matrixGraph = new MatrixGraph(9);
 
@@ -115,7 +110,7 @@ public class DriverAG {
 
         matrixGraph.addEdge(8,5);
 
-        matrixGraph.printGraph();
+        //matrixGraph.printGraph();
 
         LinkedQueue traversalBreadth2 = matrixGraph.getBreathFirstTraversal(0);
 
