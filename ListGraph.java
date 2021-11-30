@@ -209,11 +209,11 @@ public class ListGraph {
      */
     public LinkedQueue getDepthFirstTraversal(int origin) {
 
-        LinkedQueue traversalOrder = new LinkedQueue();
-        LinkedStack vertexStack = new LinkedStack();
+        LinkedQueue traversalOrder = new LinkedQueue();             // Create queue to track traversal
+        LinkedStack vertexStack = new LinkedStack();                // Create stack to track vertex travel
         
-        int visitedCounter = 0;
-        int[] visited = new int[labels.length];
+        int visitedCounter = 0;                                     // Keeps track of how many visited veteces there are
+        int[] visited = new int[labels.length];                     // Array that contains visited verteces
 
         traversalOrder.enqueue(origin);
         vertexStack.push(origin);
@@ -221,15 +221,15 @@ public class ListGraph {
         while (!vertexStack.isEmpty()) {
 
             int topVertex = vertexStack.peek();
-            int[] neighbors = neighbors(topVertex);
+            int[] neighbors = neighbors(topVertex);                 // Gets the neighbors of topVertex
 
             
-            if (hasAnUnvisited(visited, neighbors)) {
+            if (hasAnUnvisited(visited, neighbors)) {               // Proceed if atleast one neighbor is unvisited
 
                 int nextNeighbor = neighbors[getUnvisited(visited, neighbors)];
 
-                visit(visited, nextNeighbor, visitedCounter);
-                visitedCounter++;   
+                visit(visited, nextNeighbor, visitedCounter);       // Mark nextNeighbor as visited
+                visitedCounter++;                                   // Increment number of visited
 
                 traversalOrder.enqueue(nextNeighbor);
                 vertexStack.push(nextNeighbor);
@@ -244,12 +244,15 @@ public class ListGraph {
     }
 
 
+    // Adds a vertex to the visitedArray at a given index
     private void visit(int[] visitedArray, int vertex , int index) {
 
         visitedArray[index] = vertex;
 
     }
 
+
+    // Checks if the given vertex is contained within visited
     private boolean isVisited(int[] visited, int vertex) {
 
         boolean result = false;
@@ -265,6 +268,8 @@ public class ListGraph {
         
     }
 
+
+    // Checks if at least one neighbor is not in visited
     private  boolean hasAnUnvisited(int[] visited, int[] neighbor) {
         
         boolean unvisitedExists = false;
@@ -283,6 +288,7 @@ public class ListGraph {
 
     }
 
+    // gets the first neighbor that is unvisited
     private int getUnvisited(int[] visited, int[] neighbor) {
 
         int result = 0;
