@@ -1,5 +1,3 @@
-import javax.swing.text.AbstractDocument.BranchElement;
-
 public class MatrixGraph {
     
     private boolean[][] edges;      // edges[i][j] is true if there is a vertex from i to j
@@ -105,7 +103,7 @@ public class MatrixGraph {
      * @param origin The vertex from which to start the traversal.
      * @return A LinkedQueue containing the traversal order.
      */
-    public LinkedQueue getBreathFirstTraversal(int origin) {
+    public LinkedQueue getBreadthFirstTraversal(int origin) {
        
         LinkedQueue traversalOrder = new LinkedQueue();             // queue for traversal order
         LinkedQueue vertexQueue = new LinkedQueue();                // queue for vertex queue order

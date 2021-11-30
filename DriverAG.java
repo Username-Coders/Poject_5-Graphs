@@ -64,7 +64,7 @@ public class DriverAG {
 
         //graphList.printGraph();
 
-        LinkedQueue traversalBreadth1 = graphList.getBreathFirstTraversal(0);
+        LinkedQueue traversalBreadth1 = graphList.getBreadthFirstTraversal(0);
 
         printTraversalLabels_forList(graphList, traversalBreadth1);
 
@@ -72,7 +72,7 @@ public class DriverAG {
 
         printTraversalLabels_forList(graphList, traversalDepth1);
 
-
+        System.out.println();
 
         // Test code for MatrixGraph
         
@@ -112,7 +112,7 @@ public class DriverAG {
 
         //matrixGraph.printGraph();
 
-        LinkedQueue traversalBreadth2 = matrixGraph.getBreathFirstTraversal(0);
+        LinkedQueue traversalBreadth2 = matrixGraph.getBreadthFirstTraversal(0);
 
         printTraversalLabels_forMatrix(matrixGraph, traversalBreadth2);
 
