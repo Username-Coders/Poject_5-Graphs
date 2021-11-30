@@ -1,13 +1,15 @@
+import java.util.Arrays;
+
 public class ListGraph {
 
     //private Node firstNode;
     private Node[] vertexLists;
-    private int[] labels;
+    private char[] labels;
 
     // Default constructor
     public ListGraph(int n) {
 
-        labels = new int[n];
+        labels = new char[n];
         vertexLists = new Node[n];
 
         for (int i = 0; i < n; i++) {
@@ -65,17 +67,41 @@ public class ListGraph {
 
     }
 
-    public int getLabel(int vertex) {
+    public char getLabel(int vertex) {
 
         return labels[vertex];
 
     }
 
+    /**
+     * 
+     * @param vertex
+     * @return
+     */
     public int[] neighbors(int vertex) {
         
-       
+        int[] answer;
+        int counter = 0;
+        Node vertexPointer = vertexLists[vertex];
 
-        return null;
+        int edgeListSize = 0;
+        Node temp = vertexPointer;
+        while (temp.next != null) {
+            temp = temp.next;
+            edgeListSize++;
+        }
+
+        answer = new int[edgeListSize];
+
+        while (vertexPointer.next != null) {
+           answer[counter] = vertexPointer.next.data;
+           vertexPointer = vertexPointer.next;
+           counter++;
+        }
+
+        Arrays.sort(answer,0,edgeListSize);
+
+        return answer;
     }
 
     // Remove an edge
@@ -111,7 +137,7 @@ public class ListGraph {
     }
 
     // Change the label of a vertex of this graph
-    public void setLabel(int vertex, int newLabel) {
+    public void setLabel(int vertex, char newLabel) {
 
         labels[vertex] = newLabel;
 
@@ -131,7 +157,7 @@ public class ListGraph {
             
             while (temp != null) {
 
-                System.out.print(temp.data + " ");
+                System.out.print(labels[temp.data] + " ");
 
                 temp = temp.next;
             }
@@ -165,6 +191,62 @@ public class ListGraph {
         return null;
     }
 
+
+    private void visit(int[] visitedArray, int vertex , int index) {
+
+        visitedArray[index] = vertex;
+
+    }
+
+    private boolean isVisited(int[] visited, int vertex) {
+
+        boolean result = false;
+
+        for (int i = 0; i < visited.length; i++) {
+            if (visited[i] == vertex) {
+                result = true;
+                break;
+            }
+        }
+
+        return result;
+        
+    }
+
+    private  boolean hasAnUnvisited(int[] visited, int[] neighbor) {
+        
+        boolean unvisitedExists = false;
+        
+        for (int i = 0; i < neighbor.length; i++) {
+            int neighborChosen = neighbor[i];
+
+            if (!isVisited(visited, neighborChosen)) {
+                unvisitedExists = true;
+            }
+
+
+        }
+        
+        return unvisitedExists;
+
+    }
+
+    private int getUnvisited(int[] visited, int[] neighbor) {
+
+        int result = 0;
+
+        for (int i = 0; i < neighbor.length; i++) {
+            int neighborChosen = neighbor[i];
+
+            if (!isVisited(visited, neighborChosen)) {
+                result = i;
+                break;
+            }
+
+        }
+
+        return result;
+    }
 
     // Member inner class Node for linked data
     private class Node {
