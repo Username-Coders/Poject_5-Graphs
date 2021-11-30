@@ -174,8 +174,31 @@ public class ListGraph {
      */
     public LinkedQueue getBreadthFirstTraversal(int origin) {
 
+            LinkedQueue traversalOrder = new LinkedQueue();
+            LinkedQueue vertexQueue = new LinkedQueue();
+            int visitedCounter = 0 ;
+            int[] visited = new int[labels.length];
+            
+             traversalOrder.enqueue(origin);
+             vertexQueue.enqueue(origin);
+            
+             while(!vertexQueue.isEmpty()){
+              int frontVertex = vertexQueue.dequeue();
+              int[] neighbors = neighbors(frontVertex);
+              int neighborIndex = 0;
+                while(neighborIndex != neighbors.length){
+                  int nextNeighbors = neighbors.next();
+                  if(!nextNeighbors.isVisited()){
+                    nextNeighbors.visit();
+                    traversalOrder.enqueue(nextNeighbors.getLabel());
+                    vertexQueue.enqueue(nextNeighbors);
+                    
+                  }
+                }
+            
+            
 
-        return null;
+       
     }
 
 
@@ -186,9 +209,35 @@ public class ListGraph {
      */
     public LinkedQueue getDepthFirstTraversal(int origin) {
 
+        LinkedQueue traversalOrder = new LinkedQueue;
+        LinkedStack vertexQueue =   new LinkedStack;
 
+        int visitedCounter = 0;
+        int[] visited = new int[labels.length];
+      
+         traversalOrder.enqueue(origin);
+        vertexStack.push(origin);
 
-        return null;
+         while (!vertexStack.isEmpty())
+          {
+            int topVertex = vertexStack.peek();
+            int[] neighbors = frontVertex.getNeighborIterator();
+
+            if(!nextNeighbors.isVisited())
+            {
+                nextNeighbors = nextNeighbor.hasAnUnVisited;
+                nextNeighbors.visited();
+            
+                traversalOrder.enqueue(nextNeighbor);
+                vertexQueue.push(nextNeighbor);
+            }
+
+        }
+        else
+            vertexQueue.pop();
+        
+      }
+      return traversalOrder;
     }
 
 
