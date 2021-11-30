@@ -105,29 +105,11 @@ public class MatrixGraph {
      * @param origin The vertex from which to start the traversal.
      * @return A LinkedQueue containing the traversal order.
      */
+    
    public LinkedQueue getBreadthFirstTraversal(int origin) {
-
-            LinkedQueue traversalOrder = new LinkedQueue();
-            LinkedQueue vertexQueue = new LinkedQueue();
-            int visitedCounter = 0 ;
-            int[] visited = new int[labels.length];
-            
-             traversalOrder.enqueue(origin);
-             vertexQueue.enqueue(origin);
-            
-             while(!vertexQueue.isEmpty()){
-              vertexLists = vertexQueue.dequeue();
-              int[] neighbors = frontVertex.getNeighborIterator();
-            
-                while(int[] neighbors.hasNext()){
-                  nextNeighbors = neighbors,next();
-                  if(!nextNeighbors.isVisited()){
-                    nextNeighbors.visit();
-                    traversalOrder.enqueue(nextNeighbors.getLabel());
-                    vertexQueue.enqueue(nextNeighbors);
-                    
-                  }
-                }
+        
+       return null;
+   }
                  
     /**
      * Performs depth first traversal on this graph using a stack.
