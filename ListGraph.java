@@ -148,32 +148,32 @@ public class ListGraph {
      */
     public LinkedQueue getBreadthFirstTraversal(int origin) {
 
-            LinkedQueue traversalOrder = new LinkedQueue();
-            LinkedQueue vertexQueue = new LinkedQueue();
-            int visitedCounter = 0 ;
-            int[] visited = new int[labels.length];
-            
-             traversalOrder.enqueue(origin);
-             vertexQueue.enqueue(origin);
-            
-             while(!vertexQueue.isEmpty()){
-              int frontVertex = vertexQueue.dequeue();
-              int[] neighbors = neighbors(frontVertex);
-              int neighborIndex = 0;
-                while(neighborIndex != neighbors.length){
-                  int nextNeighbors = neighbors.next();
-                  if(!nextNeighbors.isVisited()){
-                    nextNeighbors.visit();
-                    traversalOrder.enqueue(nextNeighbors.getLabel());
-                    vertexQueue.enqueue(nextNeighbors);
-                    
-                  }
-                }
-            
-            
+        LinkedQueue traversalOrder = new LinkedQueue();
+        LinkedQueue vertexQueue = new LinkedQueue();
+        int visitedCounter = 0 ;
+        int[] visited = new int[labels.length];
+        
+         traversalOrder.enqueue(origin);
+         vertexQueue.enqueue(origin);
+        
+         while (!vertexQueue.isEmpty()){
+          int frontVertex = vertexQueue.dequeue();
+          int[] neighbors = neighbors(frontVertex);
+          int neighborIndex = 0;
 
-       
+            while (neighborIndex != neighbors.length){
+               int nextNeighbors = neighbors[neighborIndex];
+              if(isVisited(visited,nextNeighbors) == false) {
+                visit(visited, nextNeighbors, visitedCounter);
+                traversalOrder.enqueue(nextNeighbors);
+                vertexQueue.enqueue(nextNeighbors);
+              }
+              neighborIndex++;
+        }
     }
+
+    return traversalOrder;        // Placeholder null return, delete after
+}
 
 
     /**
