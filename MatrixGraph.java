@@ -106,9 +106,33 @@ public class MatrixGraph {
      * @return A LinkedQueue containing the traversal order.
      */
     public LinkedQueue getBreathFirstTraversal(int origin) {
+       
+            LinkedQueue traversalOrder = new LinkedQueue();     // queue for traversal order
+            LinkedQueue vertexQueue = new LinkedQueue();       // queue holds visted vertices
+            int visitedCounter = 0 ;
+            int[] visited = new int[labels.length];
+            
+             traversalOrder.enqueue(origin);                // adding vertex to queues
+             vertexQueue.enqueue(origin);
+            
+             while (!vertexQueue.isEmpty()){                    
+              int frontVertex = vertexQueue.dequeue();             //removal or vertex in vertex queue
+              int[] neighbors = neighbors(frontVertex);             //count of neighbors
+              int neighborIndex = 0;
 
+                while (neighborIndex != neighbors.length){              //index of next neighbors 
+                   int nextNeighbors = neighbors[neighborIndex];
 
-        return null;        // Placeholder null return, delete after
+                  if(isVisited(visited,nextNeighbors) == false) {       // if neighbors is not "visited", 
+                    visit(visited, nextNeighbors, visitedCounter);      // then mark as "visited"
+                    traversalOrder.enqueue(nextNeighbors);          // add next neightbors to queues
+                    vertexQueue.enqueue(nextNeighbors);
+                  }
+                  neighborIndex++;
+            }
+        }
+
+        return traversalOrder;        
     }
 
 
